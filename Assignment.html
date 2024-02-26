@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown timer</title>
+    <style>/* general styling */
+        
+        body {
+          background-color: green;
+        }
+        
+        
+        .container {
+          color: #323;
+          margin: 0 auto;
+          text-align: center;
+        }
+      
+        h1 {
+          font-weight: normal;
+          letter-spacing: 0.125rem;
+          text-transform: uppercase;
+          
+        }
+        
+        li {
+          display: inline-block;
+          font-size: 1.5em;
+          list-style-type: none;
+          padding: 1em;
+          text-transform: uppercase;
+        }
+        
+        li span {
+          display: block;
+          font-size: 4.5rem;
+          border-radius: 25%;
+          color:aliceblue
+        }
+        img {
+         width: 600px;
+         border-radius: 5%;
+         height: 400px;
+
+        }
+
+        
+    
+        
+      </style>
+</head>  
+   <div><img src="https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/iphone_15_pro_no_notch.jpg"></div>
+<div><h1 style="color:blue">IPHONE GIVEAWAY</h1></div>
+<div><h2>Giveaway ends on the 29th of February,2024 at 12:00am</h2></div>
+<div><h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, sit! Nobis eveniet maiores tempore velit ex voluptatum ea. Sit commodi explicabo harum! Ad deserunt asperiores temporibus voluptas veritatis! Amet quisquam eius repudiandae illo. Ducimus, culpa sit. Recusandae assumenda eveniet praesentium, consequuntur accusamus cum cupiditate quos, veritatis quae dolorum mollitia sint incidunt harum id molestiae, exercitationem dolor sequi iste eaque! Mollitia, nisi dolores architecto cum inventore maiores non voluptatum sit, aliquid sequi a, eum necessitatibus. Doloribus nesciunt laudantium id repellendus possimus. Quis ratione, repudiandae eum accusantium ducimus molestias repellendus recusandae sit! Perferendis reiciendis aspernatur mollitia vero fuga quas sunt nulla excepturi?</h4></div>
+
+
+<body>
+    <div class="container">
+        <doiv id="countdown">
+          <ul>
+            <li><span style="background-color:blue" id="days"></span>days</li>
+            <li><span style="background-color:blue" id="hours"></span>Hours</li>
+            <li><span style="background-color:blue" id="minutes"></span>Minutes</li>
+            <li><span style="background-color:blue" id="seconds"></span>Seconds</li>
+          </ul>
+        </div>
+       <script>(function () {
+        const second = 1000,
+              minute = second * 60,
+              hour = minute * 60,
+              day = hour * 24;
+      
+       
+        let today = new Date(),
+            dd = String(today.getDate()).padStart(2, "0"),
+            mm = String(today.getMonth() + 1).padStart(2, "0"),
+            yyyy = today.getFullYear(),
+            nextYear = yyyy + 1,
+            dayMonth = "02/29/",
+            birthday = dayMonth + yyyy;
+        
+        today = mm + "/" + dd + "/" + yyyy;
+        if (today > birthday) {
+          birthday = dayMonth + nextYear;
+        }
+        //end
+        
+        const countDown = new Date(birthday).getTime(),
+            x = setInterval(function() {    
+      
+              const now = new Date().getTime(),
+                    distance = countDown - now;
+      
+              document.getElementById("days").innerText = Math.floor(distance / (day)),
+                document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+                document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+      
+              //do something later when date is reached
+              if (distance < 0) {
+                document.getElementById("headline").innerText = "!";
+                document.getElementById("countdown").style.display = "none";
+                document.getElementById("content").style.display = "block";
+                clearInterval(x);
+              }
+              //seconds
+            }, 0)
+        }());</script>
+</body>
+</html>
+        
+        
